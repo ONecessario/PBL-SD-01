@@ -37,7 +37,7 @@ Nesta etapa, o valor de endereço do pino passado como parâmetro é movido para
 
 ### Botões
 
-No kit do laboratório, há 3 botões conectados, respectivamente, no  pino 5, pino 19 e pino 26 do GPIO LEV0. Para este projeto, escolheu-se os dois primeiros, o de pino 5 para parar ou iniciar a contagem e o de pino 19 para reiniciar a contagem. Estes dois botões serão mapeados através do GPIO LEV0, pois uma vez que se obtém seu endereço, os botões se encontram no 5° e 19° bit mais significativo dentre os 32 bits disponíveis. 
+No kit do laboratório, há 3 botões conectados, respectivamente, no  pino 5, pino 19 e pino 26 do GPIO LEV0. Para este projeto, escolheu-se os dois primeiros, o de pino 5 para parar ou iniciar a contagem e o de pino 19, para reiniciar a contagem. Estes dois botões serão mapeados através do GPIO LEV0, pois uma vez que se obtém seu endereço, os botões se encontram no 5° e 19° bit mais significativo dentre os 32 bits disponíveis. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192902352-6236a0a4-1798-4dc3-b568-9f64ee5d231c.png" title="hover text">
@@ -50,6 +50,6 @@ A lógica fundamental por trás do uso dos botões começa a partir da instruç�
   <img src="https://user-images.githubusercontent.com/88406625/192903808-949b16ec-c35a-43fe-93d7-a52b766052c4.png" title="hover text">
 </p>
 
-Este número, em binário, equivale a 100000, ou seja, assume valor 1 no 5° dígito, porém, esta é um arquitetura de 32 bits, então 16, para o hardware equivale ao n
+Como se pode perceber, independente dos valores que os demais dígitos assumem, após uma operação de AND, todos eles assumem o valor 0 além de, claro, a posição 5, uma vez que 1 é neutro na operação AND e, portanto, o estado atual do botão de pino 5 será mantido, seja em nível alto ou nível baixo.
 
 
