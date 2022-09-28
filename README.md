@@ -57,11 +57,19 @@ Em sequência, o programa realiza um deslocamento para a direita em 5 posições
 
 O contador desenvolvido para este projeto é um contador de decrescente de centenas utilizando o BCD _(Binary-Coded Decimal)_ para formar a lógica central por trás de seu funcionamento. 
 
-Inicialmente, o programa permanece na label **iniciar** aguardando o apertar de botão do usuário. Neste ponto, é executado na tela LCD uma mensagem de aviso, "Deseja iniciar?" para mostrar a quem está operando o aplicativo que ele pode executar a ação de iniciar a contagem.
+Inicialmente, o programa permanece na label **iniciar** aguardando o apertar de botão do usuário. Neste ponto, é executado na tela LCD uma mensagem de aviso, "Deseja iniciar?", para mostrar a quem está operando o aplicativo que ele pode executar a ação de iniciar a contagem. (A lógica por trás dos botões já foi explicada anteriormente)
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192906446-e455a6e8-2872-49af-abe4-f566cfe0947f.png" title="hover text">
 </p>
+
+Uma vez apertado o botão e iniciado, chega-se a parte principal do contador: 3 registradores pra centena, dezena e unidade e 1 registrador que descreve o estado atual de contagem, este último varia entre 0 e 1 durante toda a execução do temporizador, se estiver em nível lógico baixo, o contador não está pausado, mas se estiver em nível alto, isso quer dizer que o contador está parado (ou deve parar). Os outros 3 citados anteriormente são expressos em 4 bits e irão variar entre 0000 (0) e 1001 (9).
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192907293-6169d11b-d228-42f8-912b-1439ce335600.png" title="hover text">
+</p>
+
+ 
 
 
 
