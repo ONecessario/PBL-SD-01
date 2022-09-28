@@ -62,7 +62,7 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                 AND R0,#5 @ Realiza uma operação de AND com o número 5 ou, em binário, 0101. Portanto, seguindo a tabela, teremos em R0 o valor 0001
                 SUB R1, R0,#1 @ Subtrai 1 e armazena em R0, ou seja, 1 - 1, temos o número 0
                 EOR R1,#1 @ OR exclusivo entre 0 e 1, então teremos o valor 1 como resultado.
-- **CMP**: Instrução de comparação no Assembly. Vital para controlar o fluxo do código. Realiza uma operação de subtração entre dois operadores e a partir do resultado desta subtração, os operadores são efetivamente comparados em branchs logo abaixo, que podem realizar alguns tipos de comparação.
+- **CMP**: Instrução de comparação no Assembly. Vital para controlar o fluxo do código. Realiza uma operação de subtração entre dois operadores e a partir do resultado desta subtração os operadores são efetivamente comparados em branches logo abaixo, que podem realizar alguns tipos de comparação.
                 
                 ...
                 MOV R0,#0
