@@ -16,6 +16,7 @@
           ```sh
             as -o main.o main.s
           ```
+          
           ```sh
             ld -o main main.o
           ```
