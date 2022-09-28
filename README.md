@@ -23,5 +23,14 @@ ARM é uma arquitetura de computador da linha RISC _(Reduced Instruction Set Com
 #### Registradores 
 Neste projeto, o ARMv6 foi utilizado em modo de usuário, o qual disponibiliza 16 registradores com 32 bits de tamanho. Dentre estes 16, R0 ao R12 são utilizados para propósito geral,  R13 como pilha de ponteiros, R14 como linker de registrador e, por fim, o R15, que funciona como o contador do programa.
 
+#### Instruções
+Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho de 32 bits. 
+1. Hardware:
+    - Raspberry Pi Zero W;
+2. Arquitetura Raspberry:
+    - ARMv6;
+3. Linguagem de programação: 
+    - Assembly;
+
 
 
