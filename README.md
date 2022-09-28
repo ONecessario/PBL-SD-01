@@ -1,6 +1,4 @@
-# PBL de Sistemas Digitais
-
-## Temporizador em display LCD utilizando Assembly na arquitetura ARMv6 para a placa Raspberry Pi 0
+# PBL de Sistemas Digitais - Temporizador em display LCD utilizando Assembly na arquitetura ARMv6 para a placa Raspberry Pi 0
 
 ## Autor
 <div align="justify">
