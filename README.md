@@ -45,7 +45,16 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                 LDR R1,=num @ Carrega os dados de memoria em 'num' para o registrador R1
                 LDR R2,[R1] @ Carrega o dado (1) na memoria de R1 para R2
                 STR R2,[R3] @ Armazena o dado (1) na memoria de R2 para o endereço de memoria em R3
-- **LSL** e **LSR**
+- **LSL** e **LSR:** Operações de deslocamento de bits para esquerda (LSL) e direita (LSR). Úteis para posicionar um respectivo bit para uma posição de interesse.
+
+                ...
+                MOV R0,#32 @ Move para o registrador R0 o valor 32 ou, em binário de 32 bits, 0000 0000 0000 0000 0000 0000 0010 0000
+                ADD R1,R0,#1 @ O resultado desta operação é 33
+                LSR R0,#5 @ Desloca o 5° bit para a posição menos significativa. Agora temos 0000 0000 0000 0000 0000 0000 0000 0001
+                ADD R1,R0,#1 @ O resultado desta operação é 2
+- **AND**, **ORR**, **EOR** e **BIC**: Representam as operações lógicas.
+- ![image](https://user-images.githubusercontent.com/88406625/192689834-6759ed53-0276-42fd-8700-2a2242e3fe22.png)
+ 
             
 
 
