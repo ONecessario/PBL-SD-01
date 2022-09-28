@@ -8,7 +8,6 @@
     <li><a href="https://github.com/ONecessario" style="display:inline">@ONecessario</a></li>
 </div>
 
-### Recursos
-
-#### Arquitetura
+### Arquitetura
+Este projeto foi completamente feito baseado na arquitetur
 
