@@ -4,7 +4,7 @@
 
 ### Autor
 <div align="justify">
-    <h7 class="d-inline">Lucas Carneiro de Araújo Lima</h7>
+    <h7 style="display:inline">Lucas Carneiro de Araújo Lima</h7>
     <li><a href="https://github.com/ONecessario">@ONecessario</a></li>
 </div>
 
