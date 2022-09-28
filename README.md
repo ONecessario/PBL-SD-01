@@ -52,7 +52,7 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                 ADD R1,R0,#1 @ O resultado desta operação é 33
                 LSR R0,#5 @ Desloca o 5° bit para a posição menos significativa. Agora temos 0000 0000 0000 0000 0000 0000 0000 0001
                 ADD R1,R0,#1 @ O resultado desta operação é 2
-- **AND**, **ORR**, **EOR** e **BIC**: Representam as operações lógicas. Abaixo, uma tabela-verdade representando estas operações lógicas:
+- **AND**, **ORR**, **EOR** e **BIC**: Representam as operações lógicas. Abaixo, uma tabela-verdade mostrando os possíveis resultados para combinação entre 2 bits conforme cada operação lógica:
 <p align="center">
     <img src="https://user-images.githubusercontent.com/88406625/192689834-6759ed53-0276-42fd-8700-2a2242e3fe22.png" title="hover text">
 </p>
