@@ -75,6 +75,5 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                     ADD R0,#1 @ Incrementa em 1 o registrador R0
                     B loop @ retorna para o loop
             
-
-
+## Placa Raspberry PI Zero
 
