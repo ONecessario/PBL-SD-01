@@ -14,7 +14,7 @@ Implementação de um programa de temporização que apresenta uma contagem decr
 ### ARMv6 
 
 <p align="center">
-  <img src="https://adrenaline.com.br/uploads/chamadas/arm-processa-qualcomm.jpg" width="75%" title="hover text">
+  <img src="https://adrenaline.com.br/uploads/chamadas/arm-processa-qualcomm.jpg" width="80%" title="hover text">
 </p>
 
 #### Descrição
