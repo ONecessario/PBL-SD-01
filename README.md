@@ -66,11 +66,7 @@ Inicialmente, o programa permanece na label **iniciar** aguardando o apertar de 
 Uma vez apertado o botão e iniciado, chega-se a parte principal do contador: 3 registradores pra centena, dezena e unidade e 1 registrador que descreve o estado atual de contagem, este último varia entre 0 e 1 durante toda a execução do temporizador, se estiver em nível lógico baixo, o contador não está pausado, mas se estiver em nível alto, isso quer dizer que o contador está parado (ou deve parar). Os outros 3 citados anteriormente são expressos em 4 bits e irão variar entre 0000 (0) e 1001 (9).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/88406625/192907293-6169d11b-d228-42f8-912b-1439ce335600.png" title="hover text">
+  <img src="https://user-images.githubusercontent.com/88406625/192907522-4dcef7d6-2ce8-4d70-a6a8-5845c0749011.png" title="hover text">
 </p>
-
- 
-
-
 
 
