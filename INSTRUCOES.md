@@ -14,7 +14,7 @@
           
 ### Sem Makefile
 ```sh
-            as -o main.o main.s
+            as -g -o main.o main.s
 ```
           
 ```sh
@@ -23,3 +23,15 @@
 
 ## Executar
           sudo ./main
+          
+## GDB
+```sh
+            sudo gdb ./main
+```
+          
+```sh
+            b _start
+```
+```sh
+            run
+```
