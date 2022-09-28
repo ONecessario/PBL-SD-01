@@ -18,6 +18,28 @@ Para começar a programar na placa Raspberry, é ideal manipular os endereços d
   <img src="https://user-images.githubusercontent.com/88406625/192893875-b7722c0a-2b04-4289-b4e9-485c689ba22a.png" title="hover text">
 </p>
 
+            @ Abrindo o arquivo devmem responsavel pelo mapeamento de memoria
+	        LDR R0, = fileName
+            MOV R1, #0x1b0
+            ORR R1, #0x006
+            MOV R2, R1
+            MOV R7, #sys_open @ Chamada Linux para abrir arquivos
+            SVC 0
+	
+            MOVS R4, R0
+
+            @ Mapeamento
+            LDR R5, =gpio_address @ Endereço da GPIO
+            LDR R5, [R5]
+            MOV R1, #pagelen
+            MOV R2, #(prot_read + prot_write)
+            MOV R3, #map_shared
+            MOV R0, #0
+            MOV R7, #sys_map
+            SVC 0
+
+            MOVS R8, R0
+
 
 
 
