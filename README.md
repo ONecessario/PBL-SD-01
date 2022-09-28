@@ -25,11 +25,8 @@ Neste projeto, o ARMv6 foi utilizado em modo de usuário, o qual disponibiliza 1
 
 #### Instruções
 Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho de 32 bits. 
-1. Hardware:
     - Raspberry Pi Zero W;
-2. Arquitetura Raspberry:
     - ARMv6;
-3. Linguagem de programação: 
     - Assembly;
 
 
