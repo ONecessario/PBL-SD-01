@@ -50,6 +50,6 @@ A lógica fundamental por trás do uso dos botões começa a partir da instruç�
   <img src="https://user-images.githubusercontent.com/88406625/192903808-949b16ec-c35a-43fe-93d7-a52b766052c4.png" title="hover text">
 </p>
 
-Como se pode perceber, independente dos valores que os demais dígitos assumem, após uma operação de AND, todos eles assumem o valor 0 com exceção da posição 5, uma vez que 1 é neutro na operação AND e, portanto, o estado atual do botão de pino 5 será mantido, seja em nível alto ou nível baixo.
+Como se pode perceber, independente dos valores que os demais dígitos assumem, após uma operação de AND, todos assumem o valor 0 com exceção da posição 5, uma vez que 1 é neutro na operação AND e, portanto, o estado atual do botão de pino 5 será mantido, seja em nível alto ou nível baixo.
 
 
