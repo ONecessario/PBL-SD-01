@@ -5,14 +5,14 @@
         LDR R1, [R8, R2]
         LDR R3, =\pino @ Carrega o valor de offset do pino para o registrador
         ADD R3, #4 @ Quantidade de bits para deslocamento
-        LDR R3, [R3] @ load value of shift amt
-        MOV R0, #0b111 @ mask to clear 3 bits
+        LDR R3, [R3] @ Carrega o tamanho de deslocamento
+        MOV R0, #0b111 @ mask para limpar 3 bits
         LSL R0, R3 @ shift into position
-        BIC R1, R0 @ clear the three bits
-        MOV R0, #1 @ 1 bit to shift into pos
-        LSL R0, R3 @ shift by amount from table
-        ORR R1, R0 @ set the bit
-        STR R1, [R8, R2] @ save it to reg to do work
+        BIC R1, R0 @ limpa os 3 bits
+        MOV R0, #1 @ 1 bit para deslocamento
+        LSL R0, R3 
+        ORR R1, R0 @ ativa o bit
+        STR R1, [R8, R2] @ salva no registrador
 .endm
 
 @ Macro responsavel por ligar/setar uma saida associada ao pino escolhido
