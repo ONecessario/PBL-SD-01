@@ -4,7 +4,7 @@
 
 ### Autor
 <div align="justify">
-    <li><h7>Lucas Carneiro de Araújo Lima</h7><a href="https://github.com/ONecessario" style="display:inline">@ONecessario</a></li>
+    <li><h7>Lucas Carneiro de Araújo Lima </h7><a href="https://github.com/ONecessario" style="display:inline">@ONecessario</a></li>
 </div>
 
 ### **Resumo**
