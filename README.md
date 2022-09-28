@@ -71,4 +71,8 @@ Uma vez apertado o botão e iniciado, chega-se a parte principal do contador: 3 
 
 Após a definição dos registradores, o programa se encaminha para o contador. Um pouco antes, existe a label **estado** que tem como função principal inverter o valor de R4 (registrador de estado). Esta label é chamada a cada vez que o usuário tenta parar a contagem. E finalmente dentro do contador, mapeia-se dois botões no pino 5 (utilizado anteriormente para iniciar a contagem) e o pino 19 (utilizado para reiniciar a contagem). Importante notar que, se o botão 19 foi pressionado, há um branch direto para a label **iniciar**, dessa forma o programa voltará a assumir valor inicial para os registradores dos númerosos a serem mostrados. Para o botão 5, responsável por parar a contagem, caso haja sido pressionado, há um branch para a label **estado**, que inverte o valor de R4. 
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192908756-fa5025ee-d87c-4438-9879-f13ae6271271.png" title="hover text">
+</p>
+
 
