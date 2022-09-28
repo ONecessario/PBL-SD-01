@@ -14,11 +14,11 @@
           
 # Sem Makefile
           ```sh
-            as -o display.o display.s
-        ```
-        ```sh
-            ld -o display display.o
-        ```
+            as -o main.o main.s
+          ```
+          ```sh
+            ld -o main main.o
+          ```
 
 ## Executar
           sudo ./main
