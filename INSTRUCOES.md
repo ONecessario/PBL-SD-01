@@ -19,7 +19,7 @@
           
 ```sh
             ld -o main main.o
-          ```
+```
 
 ## Executar
           sudo ./main
