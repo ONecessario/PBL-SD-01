@@ -26,11 +26,11 @@ A primeira instrução foi necessária para abrir o arquivo de mapeamento, mas o
   <img src="https://user-images.githubusercontent.com/88406625/192896468-5121fc03-c65d-44e4-862d-c9cebcfc1baf.png" title="hover text">
 </p>
 
-Inicialmente, é importante definir alguns componentes associados a pinos do GPIO como saídas do programa, para isto, cria-se uma _macro_ que recebe o valor de endereço do pino, mapeia e o define como uma saída.  
+Neste ponto, dado um endereço de qualquer componente conectado ou integrado ao GPIO, este pode ser acessado uma vez que se saiba o valor de endereço. Uma vez que o mapeamento foi devidamente concluído, pode-se implementar algoritmos para manipular a GPIO em si. Inicialmente, é importante definir alguns componentes associados a pinos do GPIO como saídas do programa, para isto, cria-se uma _macro_ que recebe o valor de endereço do pino, mapeia e o define como uma saída.  
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192899325-3d71eb0d-d743-49c2-96ac-45a29dc9a01e.png" title="hover text">
 </p>
 
 
-
+Nesta etapa, o valor de endereço do pino passado como parâmetro é movido para o registrador R2 e é feito um offset entre R8 (Registrador que armazena o endereço do mapeamento) e R2.
