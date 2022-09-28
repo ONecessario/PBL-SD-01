@@ -11,7 +11,8 @@
 ### Resumo
 Implementação de um programa de temporização que apresenta uma contagem decrescente no visor LCD. O timer possui a opção de parar a contagem ou reiniciá-la através de 2 botões. O aplicativo também disponibiliza a opção de alterar o tempo através do código.
 
-### Arquitetura
+### ARMv6 
 #### Descrição
-Este projeto foi completamente feito na arquitetura ARMv6 em modo de usuário.  
+ARM é uma arquitetura de computador da linha RISC (Reduced Instruction Set Computer), ou seja, possui um número de instrições reduzidas com funções simples e objetivas. Portanto, a arquitetura ARM apresenta baixo custo, pouco consumo energético e alta dissipação de calor, tornando-a ideal para o mercado de embarcados e dispositivos portáteis. 
+Em modo de usuário (utilizado para este projeto), a arquitetura ARMv6 disponibiliza 16 registradores de 32 bits
 
