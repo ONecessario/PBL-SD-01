@@ -12,5 +12,6 @@
 Implementação de um programa de temporização que apresenta uma contagem decrescente no visor LCD. O timer possui a opção de parar a contagem ou reiniciá-la através de 2 botões. O aplicativo também disponibiliza a opção de alterar o tempo através do código.
 
 ### Arquitetura
-Este projeto foi completamente feito na arquitetura ARMv6. 
+#### Descrição
+Este projeto foi completamente feito na arquitetura ARMv6 em modo de usuário.  
 
