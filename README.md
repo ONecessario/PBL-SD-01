@@ -30,6 +30,7 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
             
                 MOV R1,#1 @ Move o valor do número 1 para o registrador R0
                 MOV R1,R2 @ Move o conteúdo armazenado no registrador R2 para o registrador R1
+- **ADD** e **SUB:** Representam a operação de soma e subtração, respectivamente.
             
 
 
