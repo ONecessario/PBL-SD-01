@@ -38,7 +38,7 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                 MOV R1,#2 @ Move o valor 2 para o registador
                 MOV R1,#3 @ Move o valor 3 para o registrador
                 ADD R0,R1,R2 @ Soma o valor de R1 e R2 e armazena em R0. 
--**LDR** e **STR:** Instruções de processamento de dado e memória. Diferentemente da instrução MOV, estas acessam a memória diretamente. LDR (load) é usado para carregar algo armazenado na memória para o registrador. STR (store) faz o processo inverso, armazena os dados contidos no registrador para a mémoria.
+- **LDR** e **STR:** Instruções de processamento de dado e memória. Diferentemente da instrução MOV, estas acessam a memória diretamente. LDR (load) é usado para carregar algo armazenado na memória para o registrador. STR (store) faz o processo inverso, armazena os dados contidos no registrador para a mémoria.
 
                 ...
                 .data
@@ -48,7 +48,7 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                 LDR R1,=num @ Carrega os dados de memoria em 'num' para o registrador R1
                 LDR R2,[R1] @ Carrega o dado (1) na memoria de R1 para R2
                 STR R2,[R3] @ Armazena o dado (1) na memoria de R2 para o endereço de memoria em R3
--**LSL** e **LSR**
+- **LSL** e **LSR**
             
 
 
