@@ -14,8 +14,9 @@ Implementação de um programa de temporização que apresenta uma contagem decr
 
 Para começar a programar na placa Raspberry, é ideal manipular os endereços das pinagens dos GPIOs (_General Purpose Input/Output_). Através dos endereços da GPIO, é possível definir entradas e saídas ou ligar e desligar um determinado componente. Porém, para que essa manipulação seja efetiva, é necessário realizar um mapeamento de memória em todo o endereço das GPIO, de maneira que, através desse mapeamento, se possa acessar diretamente qualquer pino através de um simples offset.
 
-<div align="justify">
-    ![image](https://user-images.githubusercontent.com/88406625/192893875-b7722c0a-2b04-4289-b4e9-485c689ba22a.png)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192893875-b7722c0a-2b04-4289-b4e9-485c689ba22a.png" title="hover text">
+</p>
 
 
 
