@@ -56,6 +56,7 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
 <p align="center">
     <img src="https://user-images.githubusercontent.com/88406625/192689834-6759ed53-0276-42fd-8700-2a2242e3fe22.png" title="hover text">
 </p>
+                
                 ...
                 MOV R0,#13 @ Move para R4 o valor 13 ou, em binario (apenas os 4 bits de interesse), 1011.
                 AND R0,#5 @ Realiza uma operação de AND com o número 5 ou, em binário, 0101. Portanto, seguindo a tabela, teremos em R0 o valor 0001
