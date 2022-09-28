@@ -15,9 +15,10 @@
 # Sem Makefile
           ```sh
           as main.s -o main.o
+          ```
           ```sh
           ld main.o -o main
-          ```sh
+          ```
 
 ## Executar
           sudo ./main
