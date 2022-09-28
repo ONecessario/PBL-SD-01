@@ -55,7 +55,7 @@ Em sequência, o programa realiza um deslocamento para a direita em 5 posições
 
 ## Contador / Temporizador
 
-O contador desenvolvido para este projeto é um contador de decrescente de centenas utilizando o BCD _(Binary-Coded Decimal)_ para formar a lógica central por trás de seu funcionamento. 
+O contador desenvolvido para este projeto é um contador decrescente de centenas utilizando o BCD _(Binary-Coded Decimal)_ para formar a lógica central por trás de seu funcionamento. 
 
 Inicialmente, o programa permanece na label **iniciar** aguardando o apertar de botão do usuário. Neste ponto, é executado na tela LCD uma mensagem de aviso, "Deseja iniciar?", para mostrar a quem está operando o aplicativo que ele pode executar a ação de iniciar a contagem. (A lógica por trás dos botões já foi explicada anteriormente)
 
