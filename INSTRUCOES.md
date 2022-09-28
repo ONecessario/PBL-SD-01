@@ -26,7 +26,7 @@
           
 ## GDB
 ```sh
-            sudo gdb ./main
+          sudo gdb ./main
 ```
           
 ```sh
