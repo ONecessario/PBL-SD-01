@@ -763,33 +763,33 @@ fileName: .asciz "/dev/mem"
 gpio_address: .word 0x20200
 @ LCD
 
-pinoRS:	@ LCD Display RS pino - GPIO25
-	.word 8 @ offset to select register
-	.word 15 @ bit offset in select register
-	.word 25 @ bit offset in set & clear register
+pinoRS:		@ LCD Display RS pino
+	.word 8 
+	.word 15 
+	.word 25 
 
-pinoE:	@ LCD Display E pino - GPIO1
-	.word 0 @ offset to select register
-	.word 3 @ bit offset in select register
-	.word 1 @ bit offset in set & clr register
+pinoE:		@ LCD Display E pino
+	.word 0 
+	.word 3 
+	.word 1 
 
-pinoDB4:	@ LCD Display DB4 pino - GPIO12
-	.word 4 @ offset to select register
-	.word 6 @ bit offset in select register
-	.word 12 @ bit offset in set & clr register
+pinoDB4:	@ LCD Display DB4 pino
+	.word 4 
+	.word 6 
+	.word 12 
 
-pinoDB5:	@ LCD Display DB5 pino - GPIO16
-	.word 4 @ offset to select register
-	.word 18 @ bit offset in select register
-	.word 16 @ bit offset in set & clr register
+pinoDB5:	@ LCD Display DB5 pino
+	.word 4
+	.word 18 
+	.word 16 
 
-pinoDB6:	@ LCD Display DB6 pino - GPIO20
-	.word 8 @ offset to select register
-	.word 0 @ bit offset in select register
-	.word 20 @ bit offset in set & clr register
+pinoDB6:	@ LCD Display DB6 pino
+	.word 8
+	.word 0
+	.word 20
 
-pinoDB7:	@ LCD Display DB7 pino - GPIO21
-	.word 8 @ offset to select register
-	.word 3 @ bit offset in select register
-	.word 21 @ bit offset in set & clr register
+pinoDB7:	@ LCD Display DB7 pino
+	.word 8
+	.word 3
+	.word 21
 
