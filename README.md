@@ -15,31 +15,8 @@ Implementação de um programa de temporização que apresenta uma contagem decr
 Para começar a programar na placa Raspberry, é ideal manipular os endereços das pinagens dos GPIOs (_General Purpose Input/Output_). Através dos endereços da GPIO, é possível definir entradas e saídas ou ligar e desligar um determinado componente. Porém, para que essa manipulação seja efetiva, é necessário realizar um mapeamento de memória em todo o endereço das GPIO, de maneira que, através desse mapeamento, se possa acessar diretamente qualquer pino através de um simples offset.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/88406625/192893875-b7722c0a-2b04-4289-b4e9-485c689ba22a.png" title="hover text">
+  <img src="https://user-images.githubusercontent.com/88406625/192896179-8d6a6d1a-44a7-4ba8-b167-cbc059c3d81f.png" title="hover text">
 </p>
 
-            @ Abrindo o arquivo devmem responsavel pelo mapeamento de memoria
-	        LDR R0, = fileName
-            MOV R1, #0x1b0
-            ORR R1, #0x006
-            MOV R2, R1
-            MOV R7, #sys_open @ Chamada Linux para abrir arquivos
-            SVC 0
-	
-            MOVS R4, R0
-
-            @ Mapeamento
-            LDR R5, =gpio_address @ Endereço da GPIO
-            LDR R5, [R5]
-            MOV R1, #pagelen
-            MOV R2, #(prot_read + prot_write)
-            MOV R3, #map_shared
-            MOV R0, #0
-            MOV R7, #sys_map
-            SVC 0
-
-            MOVS R8, R0
-
-
-
-
+Inicialmente, movemos para o registrador 'R0' o valor de endereço de devmem. Esta constante representa o endereço da biblioteca Linux voltada para acesso direto e mapeamento de memória. Posteriormente, se define o tamanho necessário para a leitura do arquivo e, por fim, realiza uma chamada para abrir arquivos  _sys_open_ ao sistema operacional. 
+A primeira instrução foi necessária para abrir o arquivo de mapeamento, mas o processo ainda não está encerrado
