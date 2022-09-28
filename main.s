@@ -449,12 +449,12 @@ _start:
 		loop: @ Neste ponto, o programa ficará infinitamente em loop enquanto o usuario nao apertar o botao do pino 26
 			LDR R6,[R8,#level] @ Carrega para R6 o mapeamento do GPIO LEV0
 			MOV R7,R6
-			@ Operação de AND com o número decimal que representa o 26° digito binario dentro dos 32 bits totais. 
-			@ Assim, todos os demais bits estarão em nível lógico baixo e apenas o 26° manterá seu estado original (1 é elemento neutro na operacao de AND)
+			@ Operação de AND com o número decimal que representa o 5° digito binario dentro dos 32 bits totais. 
+			@ Assim, todos os demais bits estarão em nível lógico baixo e apenas o 5° manterá seu estado original (1 é elemento neutro na operacao de AND)
 			AND R7,#32 
 			
-			@ Faz um deslocamento para direita em 26 posições. Assim, o nível lógico atual que o botão assume ficará na posição 0. Portanto, para botão pressionado terei o numero '0' e não pressionado o número '1'
-			@ Dessa forma se o estado atual do botao é representado por 0000 0100 0000 0000 0000 0000 0000 0000 (1 na 26° posição)
+			@ Faz um deslocamento para direita em 5 posições. Assim, o nível lógico atual que o botão assume ficará na posição 0. Portanto, para botão pressionado terei o numero '0' e não pressionado o número '1'
+			@ Dessa forma se o estado atual do botao é representado por 0000 0000 0000 0000 0000 0000 0010 0000 (1 na 5° posição)
 			@ Apos o shift teremos 0000 0000 0000 0000 0000 0000 0000 0001
 			@ Ou seja, o número 1 em 32 bits.
 			LSR R7,#5 
