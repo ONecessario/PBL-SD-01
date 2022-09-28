@@ -20,8 +20,17 @@ Inicialmente, move-se para o registrador 'R0' o valor de endereço de 'fileName'
   <img src="https://user-images.githubusercontent.com/88406625/192897360-c2745bb7-032d-4ccc-888e-f4f24096b788.png" title="hover text">
 </p>
 
-A primeira instrução foi necessária para abrir o arquivo de mapeamento, mas o processo ainda não está encerrado. Desta vez, move-se para o registrador R5 o endereço dos GPIOs. Em sequência, define-se em _pagelen_ o tamanho (4096) necessário pra realizar a chamada de mapeamento. Por fim, é realizado em R7 a chamada Linux _sys_map_ que retorna para o registrador R8 o mapeamento completo dos pinos da GPIO. Neste ponto, dado um endereço de qualquer componente conectado ou integrado ao GPIO, este pode ser acessado uma vez que se saiba o valor de endereço.
+A primeira instrução foi necessária para abrir o arquivo de mapeamento, mas o processo ainda não está encerrado. Desta vez, move-se para o registrador R5 o endereço dos GPIOs. Em sequência, define-se em _pagelen_ o tamanho (4096) necessário pra realizar a chamada de mapeamento. Por fim, é realizado em R7 a chamada Linux _sys_map_ que retorna para o registrador R8 o mapeamento completo dos pinos da GPIO. Neste ponto, dado um endereço de qualquer componente conectado ou integrado ao GPIO, este pode ser acessado uma vez que se saiba o valor de endereço. Uma vez que o mapeamento foi devidamente concluído, pode-se implementar algoritmos para manipular a GPIO em si.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192896468-5121fc03-c65d-44e4-862d-c9cebcfc1baf.png" title="hover text">
 </p>
+
+Inicialmente, é importante definir alguns componentes associados a pinos do GPIO como saídas do programa, para isto, cria-se uma _macro_ que recebe o valor de endereço do pino, mapeia e o define como uma saída.  
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192899325-3d71eb0d-d743-49c2-96ac-45a29dc9a01e.png" title="hover text">
+</p>
+
+
+
