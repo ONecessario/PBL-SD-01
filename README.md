@@ -16,7 +16,7 @@ Implementação de um programa de temporização que apresenta uma contagem decr
 ARM é uma arquitetura de computador da linha RISC _(Reduced Instruction Set Computer)_, ou seja, possui um número de instruções reduzidas com funções simples e objetivas. Portanto, a arquitetura ARM apresenta baixo custo, pouco consumo energético e alta dissipação de calor, tornando-a ideal para o mercado de embarcados e dispositivos portáteis. Essa arquitetura possui várias versões e dentre elas encontra-se a ARMv6, que é um versão mais leve e reduzida da versão ARMv7. 
 
 <p align="center">
-  <img src="https://www.trustedreviews.com/wp-content/uploads/sites/54/2020/08/Arm-processor-e1597137242497.jpg" width="350" title="hover text">
+  <img src="https://adrenaline.com.br/uploads/chamadas/arm-processa-qualcomm.jpg" width="350" title="hover text">
 </p>
 
 
