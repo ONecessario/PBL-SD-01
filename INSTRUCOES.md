@@ -17,7 +17,7 @@
             as -o main.o main.s
           ```
           
-          ```sh
+```sh
             ld -o main main.o
           ```
 
