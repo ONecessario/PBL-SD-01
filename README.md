@@ -10,17 +10,17 @@ Implementação de um programa de temporização que apresenta uma contagem decr
 
 ## Arquitetura ARMv6
 
-#### **Descrição**
+### **Descrição**
 ARM é uma arquitetura de computador da linha RISC _(Reduced Instruction Set Computer)_, ou seja, possui um número de instruções reduzidas com funções simples e objetivas. Portanto, a arquitetura ARM apresenta baixo custo, pouco consumo energético e alta dissipação de calor, tornando-a ideal para o mercado de embarcados e dispositivos portáteis. Essa arquitetura possui várias versões e dentre elas encontra-se a ARMv6, que é um versão mais leve e reduzida da versão ARMv7. 
 
 <p align="center">
   <img src="https://adrenaline.com.br/uploads/chamadas/arm-processa-qualcomm.jpg" width="80%" title="hover text">
 </p>
 
-#### **Registradores** 
+### **Registradores** 
 Neste projeto, o ARMv6 foi utilizado em modo de usuário, o qual disponibiliza 16 registradores com 32 bits de tamanho. Dentre estes 16, R0 ao R12 são utilizados para propósito geral,  R13 como pilha de ponteiros, R14 como linker de registrador e, por fim, o R15, que funciona como o contador do programa.
 
-#### **Instruções**
+### **Instruções**
 Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho de 32 bits. Dentre as várias instruções, aqui neste relatório será brevemente explicado as funções de algumas instruções que foram exaustivamente utilizadas no projeto:
 - **MOV:** Move o valor de um número ou dado de um registrador para outro registrador.
     
