@@ -5,6 +5,6 @@
 ### Autor
 <div align="justify">
     <h7 style="display:inline">Lucas Carneiro de Araújo Lima</h7>
-    <li><a href="https://github.com/ONecessario">@ONecessario</a></li>
+    <li><a href="https://github.com/ONecessario" style="display:inline">@ONecessario</a></li>
 </div>
 
