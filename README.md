@@ -8,6 +8,9 @@
     <li><a href="https://github.com/ONecessario" style="display:inline">@ONecessario</a></li>
 </div>
 
+### Resumo
+Implementação de um programa de temporização que apresenta uma contagem decrescente no visor LCD. O timer possui a opção de parar a contagem ou reiniciá-la.
+
 ### Arquitetura
 Este projeto foi completamente feito baseado na arquitetur
 
