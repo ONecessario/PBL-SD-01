@@ -27,7 +27,7 @@ Neste projeto, o ARMv6 foi utilizado em modo de usuário, o qual disponibiliza 1
 Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho de 32 bits. Dentre as várias instruções, aqui neste relatório será brevemente explicado as funções de algumas instruções que foram exaustivamente utilizadas no projeto:
 - **MOV:** Move o valor de um número ou dado de um registrador para outro registrador.
     
-            
+                ...
                 MOV R1,#1 @ Move o valor do número 1 para o registrador R0
                 MOV R1,R2 @ Move o conteúdo armazenado no registrador R2 para o registrador R1
 - **ADD** e **SUB:** Representam a operação de soma e subtração, respectivamente. Sendo operações aritméticas, possuem 3 fatores: Dois operandos e um resultado.
@@ -38,6 +38,17 @@ Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho
                 MOV R1,#2 @ Move o valor 2 para o registador
                 MOV R1,#3 @ Move o valor 3 para o registrador
                 ADD R0,R1,R2 @ Soma o valor de R1 e R2 e armazena em R0. 
+-**LDR** e **STR:** Instruções de processamento de dado e memória. Diferentemente da instrução MOV, estas acessam a memória diretamente. LDR (load) é usado para carregar algo armazenado na memória para o registrador. STR (store) faz o processo inverso, armazena os dados contidos no registrador para a mémoria.
+
+                ...
+                .data
+                num: .word 1
+                
+                ...
+                LDR R1,=num @ Carrega os dados de memoria em 'num' para o registrador R1
+                LDR R2,[R1] @ Carrega o dado (1) na memoria de R1 para R2
+                STR R2,[R3] @ Armazena o dado (1) na memoria de R2 para o endereço de memoria em R3
+-**LSL** e **LSR**
             
 
 
