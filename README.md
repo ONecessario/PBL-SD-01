@@ -14,14 +14,14 @@ Implementação de um programa de temporização que apresenta uma contagem decr
 
 Para começar a programar na placa Raspberry, é ideal manipular os endereços das pinagens dos GPIOs (_General Purpose Input/Output_). Através dos endereços da GPIO, é possível definir entradas e saídas ou ligar e desligar um determinado componente. Porém, para que essa manipulação seja efetiva, é necessário realizar um mapeamento de memória em todo o endereço das GPIO, de maneira que, através desse mapeamento, se possa acessar diretamente qualquer pino através de um simples offset.
 
+Inicialmente, movemos para o registrador 'R0' o valor de endereço de 'fileName'. Esta constante representa o endereço da biblioteca Linux voltada para acesso direto e mapeamento de memória. Posteriormente, se define o tamanho necessário para a leitura do arquivo e, por fim, realiza uma chamada para abrir arquivos  _sys_open_ ao sistema operacional. 
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192897360-c2745bb7-032d-4ccc-888e-f4f24096b788.png" title="hover text">
 </p>
 
-Inicialmente, movemos para o registrador 'R0' o valor de endereço de 'fileName'. Esta constante representa o endereço da biblioteca Linux voltada para acesso direto e mapeamento de memória. Posteriormente, se define o tamanho necessário para a leitura do arquivo e, por fim, realiza uma chamada para abrir arquivos  _sys_open_ ao sistema operacional. 
+A primeira instrução foi necessária para abrir o arquivo de mapeamento, mas o processo ainda não está encerrado. Desta vez, move-se para o registrador R5 o endereço dos GPIOs. Em sequência, define-se o tamanho 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192896468-5121fc03-c65d-44e4-862d-c9cebcfc1baf.png" title="hover text">
 </p>
-
-A primeira instrução foi necessária para abrir o arquivo de mapeamento, mas o processo ainda não está encerrado. Desta vez, move-se para o registrador R5 o endereço dos GPIOs. Em sequência, define-se o tamanho 
