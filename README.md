@@ -25,10 +25,12 @@ Neste projeto, o ARMv6 foi utilizado em modo de usuário, o qual disponibiliza 1
 
 #### **Instruções**
 Tal qual os registradores, cada instrução na arquitetura ARM possui um tamanho de 32 bits. Dentre as várias instruções, aqui neste relatório será brevemente explicado as funções de algumas instruções que foram exaustivamente utilizadas no projeto:
+    
     - **MOV:** Move o valor de um número ou dado de um registrador para outro registrador.
     
             
                 MOV R1,#1 @ Move o valor do número 1 para o registrador R0
+                MOV R1,R2 @ Move o conteúdo armazenado no registrador R2 para o registrador R1
             
 
 
