@@ -22,7 +22,7 @@
 ```
 
 ## Executar
-             sudo ./main
+               sudo ./main
           
 ## GDB
 ```sh
