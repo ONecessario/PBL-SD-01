@@ -53,4 +53,16 @@ A lógica fundamental por trás do uso dos botões começa a partir da instruç�
 Como se pode perceber, independente dos valores que os demais dígitos assumem, após uma operação de AND, todos convergem para o valor 0 com exceção da posição 5, uma vez que 1 é o elemento neutro na operação AND e, portanto, o estado atual do botão de pino 5 será mantido, seja em nível alto ou nível baixo.
 Em sequência, o programa realiza um deslocamento para a direita em 5 posições no registrador R7. Em outras palavras, o 5° bit que antes representava o estado atual do botão, agora é movido para o bit menos significativo do registrador. Dessa forma, após as duas operações, tem-se duas situações: R7 equivalente a 1, botão não foi pressionado, R7 equivalente a 0, botão foi pressionado. Portanto, o algoritmo compara R7 com #1, se for igual, significa que o botões está inativo, se for igual a 0 o botão foi pressionado e o programa sai do looop.
 
+## Contador / Temporizador
+
+O contador desenvolvido para este projeto é um contador de decrescente de centenas utilizando o BCD _(Binary-Coded Decimal)_ para formar a lógica central por trás de seu funcionamento. 
+
+Inicialmente, o programa permanece na label **iniciar** aguardando o apertar de botão do usuário. Neste ponto, é executado na tela LCD uma mensagem de aviso, "Deseja iniciar?" para mostrar a quem está operando o aplicativo que ele pode executar a ação de iniciar a contagem.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192906446-e455a6e8-2872-49af-abe4-f566cfe0947f.png" title="hover text">
+</p>
+
+
+
 
