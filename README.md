@@ -34,3 +34,22 @@ Neste ponto, dado um endereço de qualquer componente conectado ou integrado ao 
 
 
 Nesta etapa, o valor de endereço do pino passado como parâmetro é movido para o registrador R2 e é feito um offset entre R8 (Registrador que armazena o endereço do mapeamento) e R2.
+
+### Botões
+
+No kit do laboratório, há 3 botões conectados, respectivamente, no  pino 5, pino 19 e pino 26 do GPIO LEV0. Para este projeto, escolheu-se os dois primeiros, o de pino 5 para parar ou iniciar a contagem e o de pino 19 para reiniciar a contagem. Estes dois botões serão mapeados através do GPIO LEV0, pois uma vez que se obtém seu endereço, os botões se encontram no 5° e 19° bit mais significativo dentre os 32 bits disponíveis. 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192902352-6236a0a4-1798-4dc3-b568-9f64ee5d231c.png" title="hover text">
+</p>
+
+Neste trecho de código, o programa permanecerá em loop enquanto o botão não for pressionado. Inicialmente, o GPIO LEV0 é mapeado e movido para o registrador R6 que, por sua vez, é movido para um registrador auxiliar R7. 
+A lógica fundamental por trás do uso dos botões começa a partir da instrução AND. Supondo que o usuário não tenha apertado o botão, atualmente teríamos o bit 1 na 5° posição dos 32 bits, porém, não apenas este botão, mas todos os demais componentes conectados a este GPIO também estão enviando sinais de 1 ou 0, o que acaba comprometendo com a informação que deseja-se obter (o estado do 5° bit). Devido a isso, realiza-se uma operação de AND entre o R7 e o número 16. A imagem abaixo ilustra o que se obtém após a instrução AND:
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192903808-949b16ec-c35a-43fe-93d7-a52b766052c4.png" title="hover text">
+</p>
+
+Este número, em binário, equivale a 100000, ou seja, assume valor 1 no 5° dígito, porém, esta é um arquitetura de 32 bits, então 16, para o hardware equivale ao n
+
+
