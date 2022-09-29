@@ -86,6 +86,7 @@ Resumindo, como por padrão os registradores iniciam todos em 0, o primeiro núm
   <img src="https://user-images.githubusercontent.com/88406625/192909414-20002a95-358e-4f4b-8e86-a7b947784a1b.png" title="hover text">
 </p>
 
+![image](https://user-images.githubusercontent.com/88406625/192911605-6062eae5-508c-4d51-941f-6e5c77528ab0.png)
 
 
 
