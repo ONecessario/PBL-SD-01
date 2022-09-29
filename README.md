@@ -56,7 +56,7 @@ Neste projeto, o visor LCD será a saída principal, através dele será ilustra
   <img src="https://user-images.githubusercontent.com/88406625/192917868-b68d27aa-bd44-4e13-916c-6f33e9e74e83.png" title="hover text">
 </p>
 
-Ao total, para este projeto, será utilizado 6 pinos. o pino E ou Enable é utilizado para habilitar uma instrução passada ao LCD, o RS controla o pulso no bit mais significativo e os demais são utilizados para codificar e gerar uma determinada imagem no visor a partir disso. A exemplo da imagem abaixo, se o programador deseja mostrar a letra 'C' em maiúsculo no visor, ele deve seguir a codificação 0011 - 0100. 
+Ao total, para este projeto, será utilizado 6 pinos. o pino E ou Enable é utilizado para habilitar uma instrução passada ao LCD, o RS controla o pulso no bit mais significativo e os demais são utilizados para codificar e gerar uma determinada imagem no visor a partir disso. A exemplo da imagem abaixo, se o programador deseja mostrar a letra 'D' em maiúsculo no visor, ele deve seguir a codificação 0100 - 0100. 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192918586-4099bc48-d6ae-49e4-8e13-df423d282b4f.png" title="hover text">
@@ -70,8 +70,20 @@ Antes de codificar os pinos de modo a gerar uma certa letra ou número, é neces
 
 A primeira macro é utilizada para definir todos os pinos do LCD como saídas para o Raspberry Pi. Feito isso, pode-se usufruir das macros GPIOTurnOn e GPIOTurnOff para ligar e desligar o pino do LCD que for conveniente pra cada situação.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192919997-4bd1cb7b-224d-4243-8c2d-3876c2928b08.png" title="hover text">
+</p>
 
+Esta macro é essencial para executar qualquer instrução no LCD. O enable tem como finalidade não só como ativar uma determinada combinação de pinos passada para o LCD como também controla a velocidade de tempo em que as figuras permanecem em tela. Neste caso, o ideal é colocar um valor em mili segundos consideravelmente baixo, pois a transição se torna mais natural e você pode controlar o tempo parado na tela com outro sleep por fora.
+Outra particularidade dessa macro é a presença do '.ltorg' ao final do código. Essa instrução é útil para resolver um erro de pool no Assembly.
 
+Voltando ao que foi dito anteriormente, se a ideia for mostrar no visor a letra 'D' maiúscula, então é necessário seguir a codificação estabelecida no datasheet do LCD. Basicamente, há 2 _nibbles_, em cada um, o bit mais significativo equivale ao pino DB7 e o menos significativo ao pino DB4, a ideia é justamente reproduzir o código binário em combinações de ON e OFF das macros do GPIO. 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192921578-9ed7c816-4d48-4352-8095-83fcd676d9b0.png" title="hover text">
+</p>
+
+Seguindo a ordem de cima para baixo, aparece inicialmente o pino RS, que controla o pulso de cada _nibble_, em seguida OFF ou 0 em DB7, ON ou 1 em DB6, OFF ou 0 em DB5 e mais um OFF ou 0 em DB4. Ou seja, excluindo RS, formou o código '0 1 0 0'.
 
 ### Botões
 
