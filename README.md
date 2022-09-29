@@ -87,7 +87,8 @@ Resumindo, como por padrão os registradores iniciam todos em 0, o primeiro núm
 </p>
 
 A cada verificação, o programa é encaminhado para labels responsáveis por apresentar o número atual no visor. Por exemplo, se for o momento de printar o valor 8 nas dezenas, a label chamada será **oitenta**.
-A verificicação pra centena chama uma das labels de cem a novecentos e estas, por sua vez, limpam a tela, printam o valor e chamam a label das dezenas. Na label das dezenas, ocorre a verificação, o programa vai pra uma das labels de dez a noventa e estas printam o número sem fazer um clear (ou seja, empurram o cursor pro lado, mostrando 2 números) e volta pra label das unidades. Enfim nas unidades, repete-se o processo de comparar e retornar para as labels de zero a nove. Uma vez dentro de uma label para printar uma unidade, o resultado é apresentado sem clear (mais uma vez o resultado é deslocado, agora totalizando 3 dígitos), executa um comando de sleep para aguardar momentaneamente os 3 dígitos atuais que estão no visor e, por fim, chama uma label não envocada anteriormente: add_u.
+
+A verificicação pra centena chama uma das labels de cem a novecentos e estas, por sua vez, limpam a tela, printam o valor e chamam a label das dezenas. Na label das dezenas, ocorre a verificação, o programa vai pra uma das labels de dez a noventa e estas printam o número sem fazer um clear (ou seja, empurram o cursor pro lado, mostrando 2 números) e volta para a label das unidades. Enfim nas unidades, repete-se o processo de comparar e retornar para as labels de zero a nove. Uma vez dentro de uma label para printar uma unidade, o resultado é apresentado sem clear (mais uma vez o resultado é deslocado, agora totalizando 3 dígitos), executa um comando de sleep para aguardar momentaneamente os 3 dígitos atuais que estão no visor e, por fim, chama uma label não envocada anteriormente: add_u.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192911605-6062eae5-508c-4d51-941f-6e5c77528ab0.png" title="hover text">
@@ -95,5 +96,14 @@ A verificicação pra centena chama uma das labels de cem a novecentos e estas, 
   <img src="https://user-images.githubusercontent.com/88406625/192911923-794d171f-1591-4658-911f-c63c3375de46.png" title="hover text">
 </p>
 
+A partir de **add_u** que ocorre o controle e variação da contagem. Começando por **add_u**, esta label tem como função principal incrementar o valor do registrador R12 (unidade) e verificar se as unidades ultrapassaram o número 9. Se ainda não alcançou um limite, o valor de R12 é incrementado e o programa retorna para o início do contador. Porém, uma vez que a unidade ultrapassa o 9, ou seja, é igual a 10 (1010), a label **add_d** é chamada. 
 
+Em **add_d** o valor das unidades é zerado e o registrador R11 (dezena) é incrementado. Tal qual a label anterior, aqui as dezenas também não podem ultrapassar o número 9. Se isso não acontecer, retorna para o contador normalmente, mas se alcançou o número 10, é, enfim, chamado a label **add_c**.
 
+Em **add_c** o valor das dezenas é zerado e o registrador R10 (centena) é incrementado. Assim como em unidade e em dezena, centena não pode ultrapassar o tamanho 9, mas aqui, caso isso aconteça, isso significa que atingiu-se o valor 1000 (para o display, atingiu os números negativos, já que está em sentido oposto) e, portanto, é o fim da contagem e o programa é encerrado.
+
+Importante ressaltar que em **add_u** que ocorre a verificação do estado do código. Percebe-se que, se R4 estiver em nível lógico alto, o programa retornará pro contador antes mesmo de realizar as operações com as unidades (e por consequência, as dezenas e centenas). Ou seja, a temporização está parada, não varia.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192914680-72a3e85f-481c-42c5-ad97-aa13c06f07f7.png" title="hover text">
+</p>
