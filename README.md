@@ -77,6 +77,7 @@ Após a definição dos registradores, o programa se encaminha para o contador. 
 
 ![image](https://user-images.githubusercontent.com/88406625/192909256-3b0e2214-8edd-4437-a89a-07e934ed4f6c.png)
 ![image](https://user-images.githubusercontent.com/88406625/192909354-fa9284a5-2679-438d-8926-2d8411db3e35.png)
+![image](https://user-images.githubusercontent.com/88406625/192909414-20002a95-358e-4f4b-8e86-a7b947784a1b.png)
 
 
 
