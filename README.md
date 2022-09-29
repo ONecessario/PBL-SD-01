@@ -70,10 +70,14 @@ Uma vez apertado o botão e iniciado, chega-se a parte principal do contador: 3 
 </p>
 
 Após a definição dos registradores, o programa se encaminha para o contador. Um pouco antes, existe a label **estado** que tem como função principal inverter o valor de R4 (registrador de estado). Esta label é chamada a cada vez que o usuário tenta parar a contagem. E finalmente dentro do contador, mapeia-se dois botões, pino 5 (utilizado anteriormente para iniciar a contagem) e o pino 19 (utilizado para reiniciar a contagem). Importante notar que, se o botão 19 foi pressionado, há um branch direto para a label **iniciar**, dessa forma o programa voltará a assumir valor inicial para os registradores dos númerosos a serem mostrados. Para o botão 5, responsável por parar a contagem, caso haja sido pressionado, há um branch para a label **estado**, que inverte o valor de R4. 
+Importante ressaltar que há um sleep entre o mapeamento do GPIO LV0 e a próxima instrução pois essa foi a solução encontrada no projeto para que possibilitasse o usuário conseguir apertar o botão antes que o resto do código se execute (em tempos ínfimos computacionais, é claro).
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192908756-fa5025ee-d87c-4438-9879-f13ae6271271.png" title="hover text">
 </p>
+
+Caso não haja nenhuma interrupção por parte dos botões, chega-se a parte que efetivamente contabiliza e temporiza. A primeira label a ser executada será a das **centenas**, seguido de **dezenas** e por fim **unidades**, o porquê desta ordem será explicado posteriormente. Primeiramente se verifica o valor atual dos registradores de centena, dezena,  unidade e apresenta no display o valor correspondente. Neste projeto, há uma lógica inversa, porque embora esteja decrementando visualmente, estes registradores estão incrementando seu valor. Ou seja, se, por exemplo, o registrador R12 (unidades) estiver valendo '0000', será printado o número '9' no display. Isto vale pra todas as posições, '0001' equivale ao '8', '0010' ao 7, '0011' ao '6' e etc.  
+Resumindo, como por padrão os registradores iniciam todos em 0, o primeiro número a aparecer no display será 999. Porém ainda atende a um requisito do problema, pois o tempo é completamente ajustável. Se o usuário quiser que ele inicie em '547', por exemplo, basta definir R10 como '0100', R11 como '0101' e R12 como '0010'.
 
 
 <p align="center">
@@ -81,6 +85,7 @@ Após a definição dos registradores, o programa se encaminha para o contador. 
   <img src="https://user-images.githubusercontent.com/88406625/192909354-fa9284a5-2679-438d-8926-2d8411db3e35.png" title="hover text">
   <img src="https://user-images.githubusercontent.com/88406625/192909414-20002a95-358e-4f4b-8e86-a7b947784a1b.png" title="hover text">
 </p>
+
 
 
 
