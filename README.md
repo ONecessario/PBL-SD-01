@@ -89,7 +89,7 @@ Resumindo, como por padrão os registradores iniciam todos em 0, o primeiro núm
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/88406625/192911605-6062eae5-508c-4d51-941f-6e5c77528ab0.png" title="hover text">
-  <img src="https://user-images.githubusercontent.com/88406625/192911879-df3d8c8b-1cb1-4f75-9f34-54db3a329ddc.png" title="hover text">
+  <img src="https://user-images.githubusercontent.com/88406625/192912082-3373784d-5959-4a46-806e-fb64c9458387.png" title="hover text">
   <img src="https://user-images.githubusercontent.com/88406625/192911923-794d171f-1591-4658-911f-c63c3375de46.png" title="hover text">
 </p>
 
