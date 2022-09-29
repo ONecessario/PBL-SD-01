@@ -56,8 +56,19 @@ Neste projeto, o visor LCD será a saída principal, através dele será ilustra
   <img src="https://user-images.githubusercontent.com/88406625/192917868-b68d27aa-bd44-4e13-916c-6f33e9e74e83.png" title="hover text">
 </p>
 
-Ao total, para este projeto, será utilizado 6 pinos. o Pino E ou Enable é utilizado para habilitar uma instrução passada ao LCD, o RS controla o pulso no bit mais significativo e os demais são utilizados para codificar e gerar uma determinada imagem no visor a partir disso.
+Ao total, para este projeto, será utilizado 6 pinos. o pino E ou Enable é utilizado para habilitar uma instrução passada ao LCD, o RS controla o pulso no bit mais significativo e os demais são utilizados para codificar e gerar uma determinada imagem no visor a partir disso. A exemplo da imagem abaixo, se o programador deseja mostrar a letra 'C' em maiúsculo no visor, ele deve seguir a codificação 0011 - 0100. 
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192918586-4099bc48-d6ae-49e4-8e13-df423d282b4f.png" title="hover text">
+</p>
+
+Antes de codificar os pinos de modo a gerar uma certa letra ou número, é necessário criar algumas funções necessárias para o funcionamento ideal do visor.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192918972-3f150747-8c8f-4b1f-bacd-4f931eac03b2.png" title="hover text">
+</p>
+
+A primeira macro é utilizada para definir todos os pinos do LCD como saídas para o Raspberry Pi. Feito isso, pode-se usufruir das macros GPIOTurnOn e GPIOTurnOff para ligar e desligar o pino do LCD que for conveniente pra cada situação.
 
 
 
