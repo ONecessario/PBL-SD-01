@@ -5,6 +5,25 @@
     <li><h7>Lucas Carneiro de Araújo Lima </h7><a href="https://github.com/ONecessario" style="display:inline">@ONecessario</a></li>
 </div>
 
+## Hardware
+- Raspberry Pi 0
+
+## Arquitetura
+- ARMv6
+
+## Sistema Operacional
+- Windows 10
+- Ubuntu 
+
+## Software
+- QEMU Emulator
+- Terminal Linux
+- Bloco de Notas
+- CPUlator 
+
+## Linguagem de Programação
+- Assembly
+
 ## **Resumo**
 Implementação de um programa de temporização que apresenta uma contagem decrescente no visor LCD. O timer possui a opção de parar a contagem ou reiniciá-la através de 2 botões. O aplicativo também disponibiliza a opção de alterar o tempo através do código.
 
