@@ -20,6 +20,8 @@
 - Terminal Linux
 - Bloco de Notas
 - CPUlator 
+- GDB Debugger
+- VSCode
 
 ## Linguagem de Programação
 - Assembly
