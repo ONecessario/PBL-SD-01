@@ -33,7 +33,34 @@ Neste ponto, dado um endereço de qualquer componente conectado ou integrado ao 
 </p>
 
 
-Nesta etapa, o valor de endereço do pino passado como parâmetro é movido para o registrador R2 e é feito um offset entre R8 (Registrador que armazena o endereço do mapeamento) e R2.
+Nesta etapa, o valor de endereço do pino passado como parâmetro é movido para o registrador R2 e é feito um offset entre R8 (Registrador que armazena o endereço do mapeamento) e R2. Feito isso, mais uma vez o pino é armazenado em outro registrador e desta vez foi R3, porém, o novo fator de offset é somado a 4. O registrador R3 é utilizado para definir o tamanho de deslocamento da mask '111' que, por sua vez, é usado para limpar o bits de R1, que armazena o endereço mapeado do pino solicitado. 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192916293-bed766e1-b286-41be-adfd-19797d36ee4a.png" title="hover text">
+</p>
+
+A macro acima tem como função principal ativar/setar um determinado componente de saída conectado a GPIO. Se utilizado em um LED, por exemplo, o LED será acendido. Utiliza um offset de 28 em setregoffset, que é a quantidade padrão e pré-definida pela GPIO da raspberry para set/ligar.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192916924-e5f4f1d3-aeb2-4052-88e0-475157f543d0.png" title="hover text">
+</p>
+
+Ao contrário da anterior, esta macro tem a finalidade de desligar/executar um clear em um determinado componente de saída.
+
+
+### LCD
+
+Neste projeto, o visor LCD será a saída principal, através dele será ilustrado a contagem de 999 até 0. Para utilizar o visor, é necessário inicialmente conhecer a pinagem de entrada. 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/88406625/192917868-b68d27aa-bd44-4e13-916c-6f33e9e74e83.png" title="hover text">
+</p>
+
+Ao total, para este projeto, será utilizado 6 pinos. o Pino E ou Enable é utilizado para habilitar uma instrução passada ao LCD, o RS controla o pulso no bit mais significativo e os demais são utilizados para codificar e gerar uma determinada imagem no visor a partir disso.
+
+
+
+
 
 ### Botões
 
