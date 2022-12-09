@@ -119,7 +119,9 @@ Utilizando a implementação para o UART feita no projeto anterior como bibliote
 	<img src="https://user-images.githubusercontent.com/88406625/206802344-a4ec6918-a24b-4853-912d-c05f2932c31e.png">
 </p>
 
-Inicialmente, define-se 4 constantes. Cada constante representa um comando que será interpretado pela NodeMCU. **_MODE_SENSOR_** é o modo em que será exibido o valor
+Inicialmente, define-se 4 constantes. Cada constante representa um comando que será interpretado pela NodeMCU. **_MODE_SENSOR_** (0) é o modo em que será exibido o valor atual do sensor escolhido e também possibilitará que o usuário possa alternar entre os possíveis sensores. **_MODE_FREQUENCY_** (1) é o modo em que o usuário pode alterar o valor atual do tempo de intervalo da comunicação e esta alteração afetará a interface remota, além de, claro, visualizar no LCD o valor atual vingente. No modo **_MODE_MCU_STATUS_** (2), mostra o status de comunicação da NodeMCU. **_MODE_SENSOR_STATUS_** (3) tal qual o modo anterior, mostra o status de conexão, porém do sensor específico. 
+
+Abaixo, há outras constantes e variáveis úteis para facilitação de entendimento do código. **_TOTAL_SENSOR_** representa o número totais de sensores da comunicação, ou seja 1 analógico e 2 digitais. A variável **_current_screen_** inicializa o programa em modo de tela de valor de sensor. Em **_current_frequency_** a frequência de tempo inicial é definida como 5. 
 
 # Como executar
 
