@@ -143,6 +143,32 @@ Já na função principal, a comunicação UART é inicializada e os 3 botões d
 
 Entrando em loop, o sistema lê o valor atual do pino 05, caso esteja pressionado, a váriavel **_current_screen_** é incrementada. Como só existem 4 telas possíveis, o valor da tela atual retorna ao ponto inicial (0) quando o usuário pressionar o botão 05 pela 4° vez. Após isso, gera-se um delay de 500 milissegundos para evitar o fator _boucing_ do botão. Neste ponto, nota-se que o botão 05 é o principal, pois ele decide em que modo a interface local irá operar, podendo alterar a função dos dois botões de avanço e retardo ou, até mesmo, inutilizá-los em telas que não é necessário alterar sensor ou frequência. 
 
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206812016-00b6c692-2359-4a74-b387-125c2735f3c9.png">
+</p>
+
+Em sequência, verifica-se se o valor da tela atual corresponde ao modo de sensor (0), caso sim, a condição é atendida e é lido os valores dos botões 19 e 26. Caso o botão 19 tenha sido pressionado, o sensor atual (armazenado na variável **_current_sensor_** é decrementado, caso seja o botão 26, o sensor atual é incrementado. A constante **_TOTAL_SENSOR_** é útil para, na operação de divisão e resto, forçar a contagem variar entre 0, 1 e 2 (3 sensores). Feito isso, independente se foi incrementado ou não, obtém-se o comando (**_cmd_**) chamando a função **_get_read_sensor_code_** e passando o sensor atual. Finalmente, o comando obtido é passado pela UART chamando a função **_send_data_**.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206812744-2cabde9a-461e-4418-9f9d-f2bcebba5bd8.png">
+</p>
+
+Caso o valor da tela corresponda ao modo de frequência (1), novamente lê-se o valor dos botões 19 e 26. Da mesma forma que 19 volta ao sensor anterior, aqui 19 diminui o valor da frequência atual, enquanto 26 aumenta este valor. As divisões e operações de resto com 0 e 31 servem para manter a contagem alternando de 0 segundos a 31 segundos. Da mesma forma, o valor da frequência é enviado para a função **_get_set_frequency_code_** e obtém-se o comando, o qual é enviado para a node mcu. 
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206813125-5286cea4-1a22-4d43-b4b9-48e116ed93ea.png">
+</p>
+
+Uma vez na tela de status da node (2), os botões de avanço e recuo são inúteis, bastando retornar diretamente o valor da função **_get_mcu_status_code_**. O status foi definido de forma fixa como 1.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206813295-501be99c-4865-420d-b613-b0f7aa15328a.png">
+</p>
+
+Por fim, na tela de status de sensor (3), repete-se a mesma lógica utilizada no modo de sensor, botão 19 para recuo, 26 para avanço, chama a função específica para esta operação e retorna o comando a node mcu através da UART.
+
+
+
 # Como executar
 
 ### UART - Raspberry Pi
