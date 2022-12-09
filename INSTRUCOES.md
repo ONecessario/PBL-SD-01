@@ -123,6 +123,26 @@ Inicialmente, define-se 4 constantes. Cada constante representa um comando que s
 
 Abaixo, há outras constantes e variáveis úteis para facilitação de entendimento do código. **_TOTAL_SENSOR_** representa o número totais de sensores da comunicação, ou seja 1 analógico e 2 digitais. A variável **_current_screen_** inicializa o programa em modo de tela de valor de sensor. Em **_current_frequency_** a frequência de tempo inicial é definida como 5. 
 
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206805771-86f8b482-39ec-4830-955f-70b99ba94ebc.png">
+</p>
+
+Na imagem acima, ilustra-se 4 funções que definem a lógica por trás da seleção de sensores e alteração da frequência. Numa comunicação UART, só é possível enviar 8 bits de informação. Dito isso, pré-definiu-se que os 5 primeiros bits representarão o número do sensor ou o valor da frequência, e os 3 últimos o a seleção de comandos. Assim, como tem-se 5 bits reservados a sensor e frequência, o usuário pode selecionar do sensor 00000 (0) ao sensor 11111 (31), totalizando 32 sensores. Da mesma maneira, como os mesmos 5 bits são reservados a frequência, o usuário pode alterar a frequência de 0 a 31 segundos. Como dito anteriormente, os 3 últimos bits são responsáveis por decidir o comando. 001 para status do nodemcu, 010 para status do sensor, 011 para o valor do sensor e 100 para frequência. 
+
+Iniciando pela primeira função **_get_mcu_status_code_**, aqui meramente é retornado o valor 1 ou, em binário de 8 bits, XXXXX001, sendo os 5 primeiros bits em _don't care_ já que o número do sensor ou a frequência são irrelevantes para a tela de status da node. Em sequência, **_get_sensor_status_code_** recebe o valor do sensor atual, faz um deslocalamento em 3 bits (multiplica por 8) e soma com 2. Dessa forma, se, por exemplo, o usuário deseja obter o status do sensor 2, a função retornará (2*8)+2, ou seja, 18, que, em binário de 8 bits é representado por 00010 (Sensor 2) 010 (Comando 2). As funções **_get_read_sensor_code_** e **_get_set_frequency_code_** seguem exatamente a mesma lógica anterior, a primeira recebe o sensor novamente, multiplica por 8 e soma com 3 (Teria-se o binário 00010 011 pegando o mesmo sensor do exemplo anterior) e a segunda recebe a frequência, também multiplica por 3 e adiciona ao comando 4, dessa forma, caso o usuário deseje estabelecer a velocidade como 22 segundos, por exemplo, teria-se o valor 22*8 + 4, ou 180, que em binário é representado como 10110 (22) 100 (4).
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206810819-66bda995-6fa9-4ea3-a13e-815ae520b5c5.png">
+</p>
+
+Já na função principal, a comunicação UART é inicializada e os 3 botões de interface local humana são pinados. O botão de pino 05 é resposável por alterar a tela atual. Os pinos 19 e 26 são responsáveis por, respectivamente, voltar ou avançar na seleção de sensores ou diminuir e aumentar o valor da frequência. Em sequência cria-se algumas variáveis para ajudar a legibilidade do código. 
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206811117-6140b1ee-2395-4d87-8915-9ada5b623883.png">
+</p>
+
+Entrando em loop, o sistema lê o valor atual do pino 05, caso esteja pressionado, a váriavel **_current_screen_** é incrementada. Como só existem 4 telas possíveis, o valor da tela atual retorna ao ponto inicial (0) quando o usuário pressionar o botão 05 pela 4° vez. Após isso, gera-se um delay de 500 milissegundos para evitar o fator _boucing_ do botão. Neste ponto, nota-se que o botão 05 é o principal, pois ele decide em que modo a interface local irá operar, podendo alterar a função dos dois botões de avanço e retardo ou, até mesmo, inutilizá-los em telas que não é necessário alterar sensor ou frequência. 
+
 # Como executar
 
 ### UART - Raspberry Pi
