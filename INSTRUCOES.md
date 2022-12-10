@@ -4,7 +4,11 @@ O MQTT (euing Telemetry Transport) é um protocolo para comunicação de mensage
 # Estrutura do projeto
 Segue abaixo a estrutura de diretórios do projeto
 ```
-├── nodemcu
+├── dashboard
+│   └── chart.js
+│   └── index.html
+│   └── mqttws31.min.js
+├── nodemcu/uart
 │   └── uart.ino
 ├── README.md
 └── rpi
@@ -18,6 +22,7 @@ Segue abaixo a estrutura de diretórios do projeto
     │   └── utils.s
     ├── LICENSE
     ├── makefile
+    ├── system.c
     └── uart
         └── uart.c
 
@@ -51,9 +56,40 @@ Para construção do executável. Logo em seguida basta utilizar:
 `$ sudo ./uartx`
 para executar o programa
 ```
+countdown: counter
+example: cexample
 uart: cuart
+system: csystem
+
+counter: display.o
+	gcc -o display display.o
+
+display.o: display.s lib/lcd.o
+	as -o display.o display.s
+
+lib/lcd.o: lib/utils.o lib/gpio.o lib/fileio.o
+	as -o lib/lcd.o lib/lcd.s
+
+lib/fileio.o: lib/fileio.s
+	as -o lib/fileio.o lib/fileio.s
+
+lib/gpio.o: lib/gpio.s
+	as -o lib/gpio.o lib/gpio.s
+
+lib/utils.o: lib/utils.s
+	as -o lib/utils.o lib/utils.s
+
+uart/uart.o: uart/uart.c
+	gcc -c uart/uart.c -lwiringPi
+
+cexample: examples/countdown.c lib/lcd.s
+	gcc -o countdown examples/countdown.c lib/lcd.s
+
 cuart: uart/uart.c lib/lcd.s
 	gcc -o uartx uart/uart.c lib/lcd.s -lwiringPi
+
+csystem: system.c lib/lcd.s
+	gcc -o system system.c lib/lcd.s -lwiringPi
 ```
 # Dispositivos
 
@@ -74,20 +110,18 @@ Alguns pinos utilizados na NodeMCU estão listados na tabela abaixo:
 
 
 ## Raspberry Pi Zero
-Baseada no processador [BCM 2385](https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf), possui 54 I/O de propósito geral (GPIO), além daqueles utilizados para comunicação com o display, estão sendo utilizados mais dois para comunicação serial: TX/RX. É importante notar que, o GPIO 1 não está posicionado no PINO 1. As informações da placa são mostradas na tabela abaixo, junto da descrição sobre o uso de cada GPIO.
+Além de contar com os pinos para comunicação UART com a Node MCU, agora utilizam-se 3 botões para a interface local humana. A função destes botões será explicada posteriormente. 
 
 | Pino | GPIO | Descrição |
 | - | - | - |
 | 8 | 14 | TX |
 | 10 | 15 | RX |
-
-
-### Rotina de Inicialização
-
-Devido a alguns lixos gerados na saída serial da NodeMCU foi realizado um processo de inicialização. Quando a raspberry pi inicia, fica aguardando o envio de um conjunto de palavras em sequência específica para identificar que a inicialização foi feita com sucesso. 
+| - | 5 | BTN |
+| - | 19 | BTN |
+| - | 26 | BTN |
 
 # Comandos
-Para troca de informações entre os dispositivos, foram definidos comandos. Cada informação é enviada com 1 byte, onde os três bits mais significativos indicam um comando:
+Para troca de informações entre os dispositivos, foram definidos comandos. Cada informação é enviada com 1 byte, onde os três bits menos significativos indicam um comando:
 
 | B2 | B1 | B0 | Descrição |
 | - | - | - | - |
@@ -99,10 +133,11 @@ Os bits mais significativos B7-B3, indicam qual sensor vai ser executado o coman
 
 
 # Arquitetura
-Como mostrado na figura, temos a SBC controlando a exibição de informações no display, enquanto se comunica através da uart com a NodeMCU que possui e faz a aquisição dos dados dos sensores.
+Em relação ao projeto anterior, manteve-se a conexão via UART entre a SBC e a node MCU. O que mudou foi a adição de novos dados sendo passados e o protocolo MQTT estabelecido entre a Node e a interface local, intermediada pelo broker do laboratório.
 
-![image](https://user-images.githubusercontent.com/26310730/200289359-d2724ca6-85cb-48ff-bf14-99044af3eb83.png)
-
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206821300-396da649-2ab6-47a5-a76c-c27b5aeed07d.png">
+</p>
 
 # Funcionamento
 
@@ -167,7 +202,57 @@ Uma vez na tela de status da node (2), os botões de avanço e recuo são inúte
 
 Por fim, na tela de status de sensor (3), repete-se a mesma lógica utilizada no modo de sensor, botão 19 para recuo, 26 para avanço, chama a função específica para esta operação e retorna o comando a node mcu através da UART.
 
+## Interface Remota
 
+A interface remota foi feita em linguagem de marcação HTML e programação em javascript.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206814111-7f3c17d6-88d5-49f6-be32-147a70c22e22.png">
+</p>
+
+Inicialmente se define os parâmetros da conexão em MQTT. Os valores para host, porta, usuário e senha foram pré-definidos no _broker_ do laboratório LEDS. Após isso cria-se 2 tópicos, um para atualização dos sensores (lê (subscriber) o valor e os nomes do sensores publicados (publisher) pela Node MCU) e outro para alterar a frequência (publisher). 
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206814911-aacbcf32-d775-4c98-9493-8e0d2f03ea89.png">
+</p>
+
+A constante **_onMessageArrived_** é utilizada para obter os dados dos sensores da Node MCU. Inicialmente, obtém-se o nome do tópico e status da conexão. Caso o tópico corresponda ao tópico de atualização e a conexão esteja habilitada, a condição é atendida. Em seguida, obtém o valor da data atual, exclui-se a primeira data registrada na conexão (a mais antiga) e atualiza o histórico para as 10 mais novas (com a atual). A informação da conexão é parseada para o formato _json_, de modo a utilizar a função map e obter um array de objetos contendo o atributo label (nome do sensor) e data (valor do sensor). Por fim, limpa-se o gráfico em **_removeCharts_** e adiciona os novos dados em **_addData_**. Tais funções serão explicadas posteriormente.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206818257-6cb289e1-b370-4f50-8b2c-1704314717b6.png">
+</p>
+
+A constante **_onConnect_** é útil para estabelecer a interface remota como _subscriber_ do tópico de atualização. Utiliza-se a biblioteca PAHO para utilizar as funções do protocolo MQTT. Aqui chama-se a função **_mqtt.subscribe_** para inscrever-se no tópico de atualização e lança uma mensagem caso haja conexão.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206818708-bde18080-1e4c-4ba2-9d89-ea37ba6401d3.png">
+</p>
+
+Por fim, estabelece-se a conexão MQTT passando os parâmetros de host e porta definidos anteriormente. Em caso de uma mensagem recebida, chama-se a constante **_onMessageArrived_** para obter os nomes e valores de sensores explicados anteriormente. Por fim, a conexão é efetivamente iniciada em **_mqtt.connect_**, passando os parâmetros de usuários e senha. Caso haja conexão, a constante **_onConnect_** é chamada para inscrever a interface ao tópico.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206819063-cb68d9d4-5f1d-49b0-856b-f19507d1e514.png">
+</p>
+
+Neste ponto, cria-se na interface uma caixa de input. Nela, o usuário digita o valor da frequência que será enviado ao node mcu. Em seguida, e logo abaixo na interface, cria-se um canvas, corpo de HTML que permite edição de javascript. Neste canvas é implementado o gráfico do histórico de valor dos sensores.
+
+Na área de script, adiciona um evento de **_listening_** para o formulário de frequência. A cada vez que o usuário atualiza o valor vingente, o programa resgata tal valor e o publica no tópico de frequência utilizando a função **_mqtt.send**.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206819505-594df292-9c49-4b2c-8aca-9418782fc478.png">
+</p>
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206819543-5de759bc-5ad4-4fbe-8b49-e44e48b40a4a.png">
+</p>
+
+Em sequência, cria-se o gráfico utilizando a biblioteca Chart na área do canvas. Inicialmente, o gráfico é preenchido com valores aleatórios, apenas para ocupar a tela enquanto os valores da conexão não são recebidos.
+
+<p align="center">
+	<img src="https://user-images.githubusercontent.com/88406625/206819657-58c73d9f-6fe2-4260-8648-5c5b004f5b98.png">
+</p>
+
+Por fim, têm-se as duas funções citadas anteriormente. A função **_addData_** substitui os _labels_ do gráfico pelo vetor que armazena os nomes de todos os sensores conectados a node mcu e atualiza os dados pelos respectivos valores temporais de cada sensor. Já a função **_removeData_** apenas esvazia os registros do gráfico, esvaziando os vetores.
 
 # Como executar
 
